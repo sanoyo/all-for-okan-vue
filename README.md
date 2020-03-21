@@ -5,19 +5,17 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### ローカル環境
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### デプロイ
 
-### Run your tests
 ```
-npm run test
+1. firebase login
+2. npm run build
+3. firebase deploy
 ```
 
 ### Lints and fixes files
