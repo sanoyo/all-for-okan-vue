@@ -30,6 +30,8 @@ import { mapActions } from 'vuex'
 
 export default {
   created () {
+    if (!this.$route.params.address_id) return
+
     const address = this.$store.getters.getAddressById(this.$route.params.address_id)
     if (address) {
       this.address = address
@@ -44,11 +46,16 @@ export default {
   },
   methods: {
     submit () {
-      this.addAddress(this.address)
+      if (this.$route.params.address_id) {
+        this.updateAddress({ id: this.$route.params.address_id, address: this.address })
+      } else {
+        this.addAddress(this.address)
+      }
+
       this.$router.push({ name: 'addresses' })
       this.address = {}
     },
-    ...mapActions(['addAddress'])
+    ...mapActions(['addAddress', 'updateAddress'])
   }
 }
 </script>
