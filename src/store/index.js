@@ -25,6 +25,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    fetchAddresses ({ getters, commit }) {
+      firebase.firestore().collection(`users/${getters.uid}/addresses`).get().then(snapshot => {
+        snapshot.forEach(doc => commit('addAddress', doc.data()))
+      })
+    },
     logout () {
       firebase.auth().signOut()
     },
