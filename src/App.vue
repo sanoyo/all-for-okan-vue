@@ -5,9 +5,9 @@
       color="primary"
       dark
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="openSideMenu"></v-app-bar-nav-icon>
       <v-toolbar-title>マイアドレス帳</v-toolbar-title>
-      <v-space></v-space>
+      <v-spacer></v-spacer>
     </v-app-bar>
 
     <v-content>
@@ -18,7 +18,6 @@
 
 <script>
 import SideNav from './components/SideNav'
-
 export default {
   name: 'App',
   components: {
@@ -27,5 +26,10 @@ export default {
   data: () => ({
     //
   }),
+  methods: {
+    openSideMenu () {
+      this.$store.dispatch('toggleSideMenu')
+    }
+  }
 };
 </script>
