@@ -6,7 +6,10 @@
       dark
     >
       <v-app-bar-nav-icon v-show="$store.state.login_user" @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
-      <v-toolbar-title>マイアドレス帳</v-toolbar-title>
+      <v-tabs>
+        <v-tab>最初のページ</v-tab>
+        <v-tab>質問一覧</v-tab>
+      </v-tabs>
       <v-spacer></v-spacer>
       <v-toolbar-items v-if="$store.state.login_user">
         <b-btn text @click='logout'>ログアウト</b-btn>
