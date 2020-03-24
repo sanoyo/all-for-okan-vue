@@ -6,8 +6,8 @@
     >
       <v-app-bar-nav-icon v-show="$store.state.login_user" @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
       <v-tabs>
-        <v-tab>最初のページ</v-tab>
-        <v-tab>質問一覧</v-tab>
+        <v-tab to="/">最初のページ</v-tab>
+        <v-tab to="/questions">質問一覧</v-tab>
       </v-tabs>
       <v-spacer></v-spacer>
       <v-toolbar-items v-if="$store.state.login_user">
@@ -44,7 +44,8 @@ export default {
         }
       } else {
         this.deleteLoginUser()
-        this.$router.push({ name: 'home' }, () => {})
+        // questions ページ実装のため、一時的にコメントアウト
+        // this.$router.push({ name: 'home' }, () => {})
       }
     })
   },
