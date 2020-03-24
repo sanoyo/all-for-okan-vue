@@ -2,8 +2,7 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
-      dark
+      class="green green-text darken-2"
     >
       <v-app-bar-nav-icon v-show="$store.state.login_user" @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
       <v-tabs>
