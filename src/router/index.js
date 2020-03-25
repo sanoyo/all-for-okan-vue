@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Questions from '../views/Questions.vue'
+import Question from '../views/Question.vue'
 import Addresses from '../views/Addresses.vue'
 import AddressForm from '../views/AddressForm.vue'
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/questions',
     name: 'questions',
     component: Questions
+  },
+  {
+    path: '/question/:question_id',
+    name: 'question',
+    component: Question
   },
   {
     path: '/addresses',
