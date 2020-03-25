@@ -1,5 +1,7 @@
 # all-for-okan-vue
 
+## コンセプト
+
 ## Project setup
 ```
 npm install
@@ -23,5 +25,6 @@ npm run serve
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 参考にするサイト
+[発言小町](https://komachi.yomiuri.co.jp/)
+[ウィメンズパーク](https://women.benesse.ne.jp/forum/zboca030?CONTENTS_ID=0104010X)
