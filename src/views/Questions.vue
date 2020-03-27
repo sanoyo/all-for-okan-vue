@@ -12,29 +12,7 @@
         >
           <v-card-title>質問</v-card-title>
           <v-card-text>
-            松田聖子のライブはどうやったらみれますか？
-          </v-card-text>
-        </v-card>
-        <br>
-        <v-card
-          class="pa-md-4 mx-lg-auto"
-          color="white"
-          width="500px"
-        >
-          <v-card-title>質問</v-card-title>
-          <v-card-text>
-            としちゃんんが出ている番組の一覧を見たいんだけど
-          </v-card-text>
-        </v-card>
-        <br>
-        <v-card
-          class="pa-md-4 mx-lg-auto"
-          color="white"
-          width="500px"
-        >
-          <v-card-title>質問</v-card-title>
-          <v-card-text>
-            AmebaTVの接続方法を教えてください
+            {{ questions[0].content }}
           </v-card-text>
         </v-card>
         <br>
@@ -44,7 +22,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
+  created() {
+    this.fetchQuestions()
+    this.questions = this.$store.state.questions
+  },
+  methods: {
+    ...mapActions(['fetchQuestions'])
+  }
 }
 </script>

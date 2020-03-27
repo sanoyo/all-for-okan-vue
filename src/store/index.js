@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     login_user: null,
     drawer: false,
-    addresses: []
+    addresses: [],
+    questions: []
   },
   mutations: {
     deleteLoginUser (state) {
@@ -31,29 +32,32 @@ export default new Vuex.Store({
     deleteAddress (state, { id }) {
       const index = state.addresses.findIndex(address => address.id === id)
       state.addresses.splice(index, 1)
+    },
+    fetchQuestions (state, question ) {
+      state.questions.push(question)
     }
   },
   actions: {
-    fetchAddresses ({ getters, commit }) {
-      firebase.firestore().collection(`users/${getters.uid}/addresses`).get().then(snapshot => {
-        snapshot.forEach(doc => commit('addAddress', { id: doc.id, address: doc.data() }))
-      })
-    },
-    logout () {
-      firebase.auth().signOut()
-    },
-    deleteLoginUser ({commit}) {
-      commit('deleteLoginUser')
+    toggleSideMenu ({ commit }) {
+      commit('toggleSideMenu')
     },
     setLoginUser ({commit}, user) {
       commit('setLoginUser', user)
+    },
+    deleteLoginUser ({commit}) {
+      commit('deleteLoginUser')
     },
     login () {
       const google_auth_provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithRedirect(google_auth_provider)
     },
-    toggleSideMenu ({ commit }) {
-      commit('toggleSideMenu')
+    logout () {
+      firebase.auth().signOut()
+    },
+    fetchAddresses ({ getters, commit }) {
+      firebase.firestore().collection(`users/${getters.uid}/addresses`).get().then(snapshot => {
+        snapshot.forEach(doc => commit('addAddress', { id: doc.id, address: doc.data() }))
+      })
     },
     addAddress ({ getters, commit }, address) {
       if (getters.uid) firebase.firestore().collection(`users/${getters.uid}/addresses`).add(address).then(doc => {
@@ -73,7 +77,12 @@ export default new Vuex.Store({
           commit('deleteAddress', { id })
         })
       }
-    }
+    },
+    fetchQuestions ({ commit }) {
+      firebase.firestore().collection(`categories/PI0ZJMdcbN1de70nwMyf/questions`).get().then(snapshot => {
+        snapshot.forEach(doc => commit('fetchQuestions', doc.data() ))
+      })
+    },
   },
   getters: {
     userName: state => state.login_user ? state.login_user.displayName : '',
