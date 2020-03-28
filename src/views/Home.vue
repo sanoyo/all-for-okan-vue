@@ -4,8 +4,8 @@
       <v-flex xs12>
         <h1>全国のおかん質問してや</h1>
         <p>おかんの知りたいことを検索してください</p>
+        <!-- TODO: v-model="search" を追加する -->
         <v-text-field
-          v-model="search"
           append-icon="mdi-magnify"
           label="検索"
           sigle-line
@@ -47,9 +47,9 @@
         </v-card>
         <br>
       </v-flex>
-      <!-- <v-flex xs12 mt-5>
+      <v-flex xs12 mt-5>
         <v-btn color='info' @click="login">Googleアカウントでログイン</v-btn>
-      </v-flex> -->
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
