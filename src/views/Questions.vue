@@ -29,6 +29,11 @@ export default {
     this.fetchQuestions()
     this.questions = this.$store.state.questions
   },
+  data() {
+    return {
+      questions: []
+    }
+  },
   methods: {
     ...mapActions(['fetchQuestions'])
   }
