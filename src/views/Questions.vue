@@ -1,11 +1,9 @@
 <template>
   <v-container text-center justify-center>
     <v-layout row wrap>
-      <br>
       <v-flex xs12>
         <h1>全国のおかんの質問一覧</h1>
       </v-flex>
-
       <v-flex xs12 mt-5>
         <v-card
           class="pa-md-5 mx-lg-auto"
@@ -13,7 +11,9 @@
           width="500px"
           v-for="question in questions" :key="question.question"
         >
-          <v-card-title>{{ question.title }}</v-card-title>
+          <router-link :to="{ name: 'question_show', params: { question_id: question.id }}">
+            <v-card-title>{{ question.title }}</v-card-title>
+          </router-link>
           <v-card-text>
             {{ question.content }}
           </v-card-text>

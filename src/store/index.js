@@ -33,7 +33,8 @@ export default new Vuex.Store({
       const index = state.addresses.findIndex(address => address.id === id)
       state.addresses.splice(index, 1)
     },
-    fetchQuestions (state, question ) {
+    fetchQuestions (state, { id, question } ) {
+      question.id = id
       state.questions.push(question)
     }
   },
@@ -80,7 +81,7 @@ export default new Vuex.Store({
     },
     fetchQuestions ({ commit }) {
       firebase.firestore().collection(`categories/PI0ZJMdcbN1de70nwMyf/questions`).get().then(snapshot => {
-        snapshot.forEach(doc => commit('fetchQuestions', doc.data() ))
+        snapshot.forEach(doc => commit('fetchQuestions', { id: doc.id, question: doc.data() } ))
       })
     },
   },
@@ -88,6 +89,7 @@ export default new Vuex.Store({
     userName: state => state.login_user ? state.login_user.displayName : '',
     photoURL: state => state.login_user ? state.login_user.photoURL : '',
     uid: state => state.login_user ? state.login_user.uid : null,
-    getAddressById: state => id => state.addresses.find(address => address.id === id)
+    getAddressById: state => id => state.addresses.find(address => address.id === id),
+    getQuestionById: state => id => state.questions.find(question => question.id === id)
   }
 })

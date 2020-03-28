@@ -40,5 +40,15 @@
 <script>
 
 export default {
+  created() {
+    const question = this.$store.getters.getQuestionById(this.$route.params.question_id)
+    console.log(this.$store)
+    console.log(question)
+  },
+  data () {
+    return {
+      question: {}
+    }
+  },
 }
 </script>

@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '/question/:question_id',
-    name: 'question',
+    name: 'question_show',
     component: Question
   },
   {
