@@ -11,7 +11,7 @@
           width="500px"
         >
           <v-card-text>
-            松田聖子のコンサートの日程はいつですか？
+            {{ question }}
           </v-card-text>
         </v-card>
         <br>
@@ -38,17 +38,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   created() {
-    const question = this.$store.getters.getQuestionById(this.$route.params.question_id)
-    console.log(this.$store)
-    console.log(question)
+    // console.log(this.$route.params.question_id)
+    // this.showQuestion({ id: this.$route.params.question_id })
+    // this.question = this.$store.state.question
+    // console.log(this.question)
   },
   data () {
     return {
       question: {}
     }
   },
+  methods: {
+    ...mapActions(['showQuestion'])
+  }
 }
 </script>

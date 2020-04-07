@@ -9,7 +9,8 @@ export default new Vuex.Store({
     login_user: null,
     drawer: false,
     addresses: [],
-    questions: []
+    questions: [],
+    question: [],
   },
   mutations: {
     deleteLoginUser (state) {
@@ -36,6 +37,10 @@ export default new Vuex.Store({
     fetchQuestions (state, { id, question } ) {
       question.id = id
       state.questions.push(question)
+    },
+    showQuestion (state, { question }) {
+      console.log(question);
+      state.question.push(question)
     }
   },
   actions: {
@@ -84,12 +89,21 @@ export default new Vuex.Store({
         snapshot.forEach(doc => commit('fetchQuestions', { id: doc.id, question: doc.data() } ))
       })
     },
+    showQuestion ({ commit }, id ) {
+      console.log(id)
+      firebase.firestore().collection(`categories/PI0ZJMdcbN1de70nwMyf/questions`).where("questions", "==". id["id"]).get().then(snapshot => {
+        snapshot.forEach(doc => commit('showQuestion', { id: doc.id, question: doc.data() } ))
+      }); 
+      // const documentSnapshot = firebase.firestore().collection(`categories/PI0ZJMdcbN1de70nwMyf/questions`).doc(id['id']).get();
+      // console.log(documentSnapshot)
+      // const test = documentSnapshot.data()
+      // commit('showQuestion', { test })
+    },
   },
   getters: {
     userName: state => state.login_user ? state.login_user.displayName : '',
     photoURL: state => state.login_user ? state.login_user.photoURL : '',
     uid: state => state.login_user ? state.login_user.uid : null,
-    getAddressById: state => id => state.addresses.find(address => address.id === id),
-    getQuestionById: state => id => state.questions.find(question => question.id === id)
+    getAddressById: state => id => state.addresses.find(address => address.id === id)
   }
 })
