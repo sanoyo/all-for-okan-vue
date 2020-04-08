@@ -23,12 +23,7 @@
           width="600px"
         >
           <v-card-text>
-            下記は松田聖子さんのオフィシャルサイトです。
-            https://www.seikomatsuda.co.jp/<br>
-            こちらは今年のコンサートの日程表です。
-            https://www.seikomatsuda.co.jp/info/concert<br>
-
-            ここを参考にすると、6月、8月、9月、10月にコンサートがあるようです。
+            {{ question }}
           </v-card-text>
         </v-card>
         <br>
@@ -42,10 +37,8 @@ import { mapActions } from 'vuex'
 
 export default {
   created() {
-    // console.log(this.$route.params.question_id)
-    // this.showQuestion({ id: this.$route.params.question_id })
-    // this.question = this.$store.state.question
-    // console.log(this.question)
+    this.showQuestion({ id: this.$route.params.question_id })
+    this.question = this.$store.state.question
   },
   data () {
     return {
