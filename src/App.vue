@@ -4,15 +4,10 @@
       app
       class="lime lighten-5"
     >
-      <v-app-bar-nav-icon v-show="$store.state.login_user" @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
-      <v-tabs>
-        <v-tab to="/">最初のページ</v-tab>
-        <v-tab to="/questions">質問一覧</v-tab>
-      </v-tabs>
-      <v-spacer></v-spacer>
-      <v-toolbar-items v-if="$store.state.login_user">
-        <b-btn text @click='logout'>ログアウト</b-btn>
-      </v-toolbar-items>
+     <header>おかんMaster</header>
+      <!-- <v-tabs>
+        <v-tab to="/">おかん</v-tab>
+      </v-tabs> -->
     </v-app-bar>
     <SideNav/>
 
