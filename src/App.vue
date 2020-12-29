@@ -4,10 +4,13 @@
       app
       class="lime lighten-5"
     >
-     <header>おかんMaster</header>
-      <!-- <v-tabs>
+     <!-- <header>おかんMaster</header> -->
+      <v-tabs class="header">
         <v-tab to="/">おかん</v-tab>
-      </v-tabs> -->
+      </v-tabs>
+      <v-flex xs12 offset-xs8>
+        <v-tab to="/topic/create" class="topic-create">トピックを作成</v-tab>
+      </v-flex>
     </v-app-bar>
 
     <v-content>
@@ -47,3 +50,5 @@ export default {
   }
 };
 </script>
+<style>
+</style>
