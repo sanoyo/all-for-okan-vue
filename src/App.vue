@@ -9,7 +9,6 @@
         <v-tab to="/">おかん</v-tab>
       </v-tabs> -->
     </v-app-bar>
-    <SideNav/>
 
     <v-content>
       <v-container fluid fill-height align-start>
@@ -22,13 +21,9 @@
 <script>
 import firebase from 'firebase'
 import { mapActions } from 'vuex'
-import SideNav from './components/SideNav'
 
 export default {
   name: 'App',
-  components: {
-    SideNav
-  },
   created () {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
