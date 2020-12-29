@@ -4,17 +4,14 @@
       app
       class="lime lighten-5"
     >
-      <v-app-bar-nav-icon v-show="$store.state.login_user" @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
-      <v-tabs>
-        <v-tab to="/">最初のページ</v-tab>
-        <v-tab to="/questions">質問一覧</v-tab>
+     <!-- <header>おかんMaster</header> -->
+      <v-tabs class="header">
+        <v-tab to="/">おかん</v-tab>
       </v-tabs>
-      <v-spacer></v-spacer>
-      <v-toolbar-items v-if="$store.state.login_user">
-        <b-btn text @click='logout'>ログアウト</b-btn>
-      </v-toolbar-items>
+      <v-flex xs12 offset-xs8>
+        <v-tab to="/topic/create" class="topic-create">トピックを作成</v-tab>
+      </v-flex>
     </v-app-bar>
-    <SideNav/>
 
     <v-content>
       <v-container fluid fill-height align-start>
@@ -27,13 +24,9 @@
 <script>
 import firebase from 'firebase'
 import { mapActions } from 'vuex'
-import SideNav from './components/SideNav'
 
 export default {
   name: 'App',
-  components: {
-    SideNav
-  },
   created () {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -57,3 +50,5 @@ export default {
   }
 };
 </script>
+<style>
+</style>

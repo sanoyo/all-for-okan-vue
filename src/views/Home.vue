@@ -1,8 +1,11 @@
 <template>
   <v-container text-center justify-center>
     <v-layout row wrap>
-      <v-spacer></v-spacer>
-      <v-flex xs12 mt-5>
+      <v-flex xs12 mt-6>
+        おかんってどんなサイト？<br>
+        おかん思いの息子が運営する掲示板です。みなさんの知りたいことを匿名で相談できます。
+      </v-flex>
+      <v-flex xs12 mt-6>
         <v-card
           class="pa-md-5 mx-lg-auto"
           color="white"
@@ -28,9 +31,16 @@
         </v-card>
         <br>
       </v-flex>
-      <!-- <v-flex xs12 mt-5>
-        <v-btn color='info' @click="login">Googleアカウントでログイン</v-btn>
-      </v-flex> -->
+      <v-flex xs12 mt-6>
+        <v-btn
+          rounded
+          outlined
+          color="indigo"
+          x-large
+        >
+        トピックを作成してみる
+        </v-btn>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
